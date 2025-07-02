@@ -72,7 +72,7 @@ function euc_render_settings_page_content() {
                                     echo '<details class="euc-css-helper">';
                                     echo '<summary>' . esc_html__( 'How to find CSS selectors', 'editor-ui-cleaner' ) . '</summary>';
                                     echo '<div class="euc-css-helper-content">';
-                                    echo '<p>' . esc_html__( 'Use your browser\u0027s developer tools to inspect the editor and find the ID or class of the element you want to hide. Right-click the element and choose \"Inspect\".', 'editor-ui-cleaner' ) . '</p>';
+                                    echo '<p>' . esc_html__( 'Use your browser\'s developer tools to inspect the editor and find the ID or class of the element you want to hide. Right-click the element and choose \"Inspect\".', 'editor-ui-cleaner' ) . '</p>';
                                     echo '<ul>';
                                     echo '<li><strong>' . esc_html__( 'Classic Editor:', 'editor-ui-cleaner' ) . '</strong> ' . esc_html__( 'Metaboxes usually have an ID, e.g.,', 'editor-ui-cleaner' ) . ' <code>#my_plugin_metabox</code>.</li>';
                                     echo '<li><strong>' . esc_html__( 'Block Editor (Gutenberg):', 'editor-ui-cleaner' ) . '</strong> ' . esc_html__( 'Elements are often targeted with classes. Look for a unique class on the panel or button, e.g.,', 'editor-ui-cleaner' ) . ' <code>.my-plugin-sidebar-panel</code>.</li>';

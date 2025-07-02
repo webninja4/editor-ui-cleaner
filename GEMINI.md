@@ -52,6 +52,7 @@ This document outlines the development plan and key decisions for the Editor UI 
 
 ### 1.1.0 (In Progress)
 *   Started work on a major UI overhaul for the settings page.
+*   fix: Collapsed all post types by default in the settings UI.
 
 ### 1.0.0 - 2025-07-02
 *   feat: Complete Phase 4 development tasks, including security enhancements and the addition of an `uninstall.php` script.

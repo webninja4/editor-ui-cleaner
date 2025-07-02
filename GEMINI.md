@@ -38,3 +38,9 @@ This document outlines the development plan and key decisions for the Editor UI 
 *   **Framework:** Standard WordPress functions and APIs. No external frameworks to keep it lightweight.
 *   **Settings Storage:** A single option in the `wp_options` table, storing a multidimensional array.
 *   **UI Hiding:** A combination of `remove_meta_box()` for classic metaboxes and injected CSS (`display: none !important;`) for other elements, especially in the Block Editor. Dynamic detection of editor type (Classic vs. Block) based on rendered HTML for accurate rule application.
+
+## Changelog
+
+### 1.0.0 - 2025-07-02
+*   feat: Complete Phase 4 development tasks, including security enhancements and the addition of an `uninstall.php` script.
+*   Initial release.

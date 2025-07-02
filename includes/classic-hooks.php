@@ -24,14 +24,17 @@ function euc_remove_classic_meta_boxes( $post_type, $elements_to_hide ) {
 
     foreach ( $elements_to_hide as $element_id ) {
         if ( isset( $all_elements[$element_id]['classic'] ) ) {
-            $meta_box_id = trim( $all_elements[$element_id]['classic'], '#' );
+            $meta_box_ids = array_map( 'trim', explode( ',', $all_elements[$element_id]['classic'] ) );
 
-            // Iterate over all contexts and priorities to remove the meta box
-            // This is a more robust way to ensure removal regardless of where it's registered.
-            foreach ( ['normal', 'advanced', 'side'] as $context ) {
-                foreach ( ['high', 'core', 'default', 'low'] as $priority ) {
-                    if ( isset( $wp_meta_boxes[$post_type][$context][$priority][$meta_box_id] ) ) {
-                        remove_meta_box( $meta_box_id, $post_type, $context );
+            foreach ( $meta_box_ids as $meta_box_id ) {
+                $meta_box_id = trim( $meta_box_id, '#' ); // Ensure no leading #
+                // Iterate over all contexts and priorities to remove the meta box
+                // This is a more robust way to ensure removal regardless of where it's registered.
+                foreach ( ['normal', 'advanced', 'side'] as $context ) {
+                    foreach ( ['high', 'core', 'default', 'low'] as $priority ) {
+                        if ( isset( $wp_meta_boxes[$post_type][$context][$priority][$meta_box_id] ) ) {
+                            remove_meta_box( $meta_box_id, $post_type, $context );
+                        }
                     }
                 }
             }

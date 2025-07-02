@@ -139,6 +139,11 @@ function euc_get_configurable_ui_elements() {
             'classic' => '#contextual-help-link-wrap',
             'block_panel' => '',
         ],
+        'relevanssi' => [
+            'label' => __( 'Relevanssi Metabox', 'editor-ui-cleaner' ),
+            'classic' => '#relevanssi_hidebox',
+            'block_panel' => 'Relevanssi',
+        ],
     ];
 }
 

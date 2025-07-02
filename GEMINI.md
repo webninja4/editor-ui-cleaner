@@ -55,6 +55,7 @@ This document outlines the development plan and key decisions for the Editor UI 
 *   fix: Collapsed all post types by default in the settings UI.
 *   fix: Corrected apostrophe rendering in custom CSS helper text.
 *   fix: Applied UI rules to roles with `manage_options` capability, excluding only the built-in administrator role.
+*   fix: Correctly hide Discussions metabox and add Relevanssi metabox to configurable elements.
 
 ### 1.0.0 - 2025-07-02
 *   feat: Complete Phase 4 development tasks, including security enhancements and the addition of an `uninstall.php` script.

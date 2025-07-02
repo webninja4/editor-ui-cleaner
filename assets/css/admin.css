@@ -1,0 +1,56 @@
+/* Editor UI Cleaner Admin CSS */
+
+.euc-settings-wrap .euc-tab-content {
+    display: none;
+}
+
+.euc-settings-wrap .euc-tab-content-active {
+    display: block;
+}
+
+.euc-accordion-item {
+    border: 1px solid #c3c4c7;
+    margin-bottom: 10px;
+}
+
+.euc-accordion-title {
+    background: #f0f0f1;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.euc-accordion-title:hover {
+    background: #e0e0e1;
+}
+
+.euc-accordion-icon {
+    transition: transform 0.2s ease-in-out;
+}
+
+.euc-accordion-item.euc-accordion-open .euc-accordion-icon {
+    transform: rotate(-180deg);
+}
+
+.euc-accordion-content {
+    padding: 15px;
+    display: none;
+}
+
+.euc-accordion-item.euc-accordion-open .euc-accordion-content {
+    display: block;
+}
+
+.euc-checkbox-label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.euc-toggle-all-label {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    display: inline-block;
+}

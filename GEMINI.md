@@ -26,12 +26,21 @@ This document outlines the development plan and key decisions for the Editor UI 
 - [X] Implement Block Editor hiding logic in `block-hooks.php`.
 - [X] Develop the main controller to apply rules based on user/screen.
 
-### Phase 4: Finalization and Repository Push
+### Phase 4: Finalization and Repository Push (Complete)
 
-- [ ] Implement security best practices (nonces, sanitization, escaping).
-- [ ] Create `uninstall.php` script.
+- [X] Implement security best practices (nonces, sanitization, escaping).
+- [X] Create `uninstall.php` script.
 - [X] Populate `readme.txt`.
-- [ ] Push final, stable code to GitHub.
+- [X] Push final, stable code to GitHub.
+
+### Phase 5: Settings UI Enhancement
+
+- [ ] Implement a tabbed interface for user roles.
+- [ ] Create collapsible sections for post types.
+- [ ] Set the default state to show the first role tab and expand the first post type.
+- [ ] Add a "Check/Uncheck All" toggle for each post type section.
+- [ ] Enqueue dedicated CSS and JavaScript for the new UI.
+- [ ] Apply styling to match the WordPress admin theme.
 
 ## Key Decisions
 
@@ -40,6 +49,9 @@ This document outlines the development plan and key decisions for the Editor UI 
 *   **UI Hiding:** A combination of `remove_meta_box()` for classic metaboxes and injected CSS (`display: none !important;`) for other elements, especially in the Block Editor. Dynamic detection of editor type (Classic vs. Block) based on rendered HTML for accurate rule application.
 
 ## Changelog
+
+### 1.1.0 (In Progress)
+*   Started work on a major UI overhaul for the settings page.
 
 ### 1.0.0 - 2025-07-02
 *   feat: Complete Phase 4 development tasks, including security enhancements and the addition of an `uninstall.php` script.

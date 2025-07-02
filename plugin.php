@@ -40,6 +40,34 @@ function euc_render_settings_page() {
 }
 
 /**
+ * Enqueue admin scripts and styles.
+ *
+ * @param string $hook
+ */
+function euc_admin_enqueue_scripts( $hook ) {
+    // Only load on our settings page
+    if ( 'settings_page_editor-ui-cleaner' !== $hook ) {
+        return;
+    }
+
+    wp_enqueue_style(
+        'euc-admin-styles',
+        plugin_dir_url( __FILE__ ) . 'assets/css/admin.css',
+        [],
+        '1.0.0'
+    );
+
+    wp_enqueue_script(
+        'euc-admin-scripts',
+        plugin_dir_url( __FILE__ ) . 'assets/js/admin.js',
+        [ 'jquery' ],
+        '1.0.0',
+        true
+    );
+}
+add_action( 'admin_enqueue_scripts', 'euc_admin_enqueue_scripts' );
+
+/**
  * Get the master list of configurable UI elements.
  *
  * @return array

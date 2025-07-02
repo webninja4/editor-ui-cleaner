@@ -70,8 +70,21 @@ function euc_render_settings_page_content() {
                                         echo '<label class="euc-checkbox-label"><input type="checkbox" name="euc_settings[' . esc_attr( $role_id ) . '][' . esc_attr( $post_type_id ) . '][]" value="' . esc_attr( $element_id ) . '" ' . checked( $checked, true, false ) . ' /> ' . esc_html( $element['label'] ) . '</label>';
                                     }
                                     $custom_css = isset( $options[$role_id][$post_type_id]['custom_css'] ) ? $options[$role_id][$post_type_id]['custom_css'] : '';
+                                    echo '<div class="euc-custom-css-container">';
                                     echo '<p><strong>' . esc_html__( 'Custom CSS Selectors (one per line):', 'editor-ui-cleaner' ) . '</strong></p>';
+                                    echo '<details class="euc-css-helper">';
+                                    echo '<summary>' . esc_html__( 'How to find CSS selectors', 'editor-ui-cleaner' ) . '</summary>';
+                                    echo '<div class="euc-css-helper-content">';
+                                    echo '<p>' . esc_html__( 'Use your browser\u0027s developer tools to inspect the editor and find the ID or class of the element you want to hide. Right-click the element and choose \"Inspect\".', 'editor-ui-cleaner' ) . '</p>';
+                                    echo '<ul>';
+                                    echo '<li><strong>' . esc_html__( 'Classic Editor:', 'editor-ui-cleaner' ) . '</strong> ' . esc_html__( 'Metaboxes usually have an ID, e.g.,', 'editor-ui-cleaner' ) . ' <code>#my_plugin_metabox</code>.</li>';
+                                    echo '<li><strong>' . esc_html__( 'Block Editor (Gutenberg):', 'editor-ui-cleaner' ) . '</strong> ' . esc_html__( 'Elements are often targeted with classes. Look for a unique class on the panel or button, e.g.,', 'editor-ui-cleaner' ) . ' <code>.my-plugin-sidebar-panel</code>.</li>';
+                                    echo '<li>' . esc_html__( 'Prefix IDs with a hash (#) and classes with a period (.).', 'editor-ui-cleaner' ) . '</li>';
+                                    echo '</ul>';
+                                    echo '</div>';
+                                    echo '</details>';
                                     echo '<textarea name="euc_settings[' . esc_attr( $role_id ) . '][' . esc_attr( $post_type_id ) . '][custom_css]" rows="5" cols="50" class="large-text code">' . esc_textarea( $custom_css ) . '</textarea>';
+                                    echo '</div>';
                                     ?>
                                 </div>
                             </div>

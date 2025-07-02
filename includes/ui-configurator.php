@@ -31,8 +31,8 @@ function euc_apply_ui_rules() {
     error_log( 'EUC Debug: Current Screen: ' . print_r( $screen, true ) );
     error_log( 'EUC Debug: All Settings: ' . print_r( $settings, true ) );
 
-    // Don't apply rules to administrators.
-    if ( current_user_can( 'manage_options' ) ) {
+    // Don't apply rules to the built-in administrator role.
+    if ( in_array( 'administrator', (array) $current_user->roles ) ) {
         error_log( 'EUC Debug: User is administrator, returning.' );
         return;
     }

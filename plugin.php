@@ -144,6 +144,11 @@ function euc_get_configurable_ui_elements() {
             'classic' => '#relevanssi_hidebox',
             'block_panel' => 'Relevanssi',
         ],
+        'ame_content_permissions' => [
+            'label' => __( 'Content Permissions (AME)', 'editor-ui-cleaner' ),
+            'classic' => '#ame-cpe-content-permissions',
+            'block_panel' => 'Content Permissions (AME)',
+        ],
     ];
 }
 

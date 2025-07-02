@@ -1,0 +1,15 @@
+.components-panel__body-title button:contains('Revisions') { display: none !important; }
+.components-panel__body-title button:contains('Page Attributes') { display: none !important; }
+.components-panel__body-title button:contains('Discussion') { display: none !important; }
+.components-panel__body-title button:contains('Author') { display: none !important; }
+.components-panel__body-title button:contains('Featured Image') { display: none !important; }
+.components-panel__body-title button:contains('Excerpt') { display: none !important; }
+.components-panel__body-title button:contains('Custom Fields') { display: none !important; }
+.components-panel__body-title button:contains('Permalink') { display: none !important; }
+.components-panel__body-title button:contains('Categories') { display: none !important; }
+.components-panel__body-title button:contains('Tags') { display: none !important; }
+
+/* Specific elements that are not panels */
+#screen-options-link-wrap, #contextual-help-link-wrap {
+    display: none !important;
+}

@@ -48,12 +48,9 @@ function euc_render_settings_page_content() {
                     ?>
                     <div id="euc-tab-<?php echo esc_attr( $role_id ); ?>" class="euc-tab-content <?php echo esc_attr( $active_class ); ?>">
                         <?php
-                        $first_post_type = true;
                         foreach ( $post_types as $post_type_id => $post_type ) {
-                            $is_open = $first_post_type ? 'euc-accordion-open' : '';
-                            $first_post_type = false;
                             ?>
-                            <div class="euc-accordion-item <?php echo esc_attr( $is_open ); ?>">
+                            <div class="euc-accordion-item">
                                 <h3 class="euc-accordion-title">
                                     <?php echo esc_html( $post_type->label ); ?>
                                     <span class="euc-accordion-icon dashicons dashicons-arrow-down"></span>

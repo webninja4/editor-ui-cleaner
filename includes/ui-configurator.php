@@ -20,25 +20,33 @@ function euc_apply_ui_rules() {
     if ( ! is_admin() ) {
         return;
     }
-    error_log( 'EUC Debug: euc_apply_ui_rules called.' );
+    if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+        error_log( 'EUC Debug: euc_apply_ui_rules called.' );
+    }
 
     $current_user = wp_get_current_user();
     $user_roles = (array) $current_user->roles;
     $settings = get_option( 'euc_settings', [] );
     $screen = get_current_screen();
 
-    error_log( 'EUC Debug: Current User Roles: ' . print_r( $user_roles, true ) );
-    error_log( 'EUC Debug: Current Screen: ' . print_r( $screen, true ) );
-    error_log( 'EUC Debug: All Settings: ' . print_r( $settings, true ) );
+    if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+        error_log( 'EUC Debug: Current User Roles: ' . print_r( $user_roles, true ) );
+        error_log( 'EUC Debug: Current Screen: ' . print_r( $screen, true ) );
+        error_log( 'EUC Debug: All Settings: ' . print_r( $settings, true ) );
+    }
 
     // Don't apply rules to the built-in administrator role.
     if ( in_array( 'administrator', (array) $current_user->roles ) ) {
-        error_log( 'EUC Debug: User is administrator, returning.' );
+        if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+            error_log( 'EUC Debug: User is administrator, returning.' );
+        }
         return;
     }
 
     if ( ! $screen || ! isset( $screen->post_type ) || empty( $screen->post_type ) ) {
-        error_log( 'EUC Debug: Not a post editing screen or post type not set, returning.' );
+        if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+            error_log( 'EUC Debug: Not a post editing screen or post type not set, returning.' );
+        }
         return;
     }
 
@@ -47,7 +55,9 @@ function euc_apply_ui_rules() {
     foreach ( $user_roles as $role_id ) {
         if ( isset( $settings[$role_id][$post_type] ) ) {
             $elements_to_hide = $settings[$role_id][$post_type];
-            error_log( 'EUC Debug: Elements to hide for role ' . $role_id . ' and post type ' . $post_type . ': ' . print_r( $elements_to_hide, true ) );
+            if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+                error_log( 'EUC Debug: Elements to hide for role ' . $role_id . ' and post type ' . $post_type . ': ' . print_r( $elements_to_hide, true ) );
+            }
             if ( ! empty( $elements_to_hide ) ) {
                 // Always enqueue admin.js and pass all necessary data.
                 add_action( 'admin_enqueue_scripts', function() use ( $elements_to_hide, $settings, $role_id, $post_type, $screen ) {
@@ -99,12 +109,18 @@ function euc_apply_ui_rules() {
                     $is_classic_editor_html_heuristic = true;
                 } elseif ( ! empty( $_GET['classic-editor'] ) || ! empty( $_GET['classic-editor__forget'] ) ) {
                     $is_classic_editor_html_heuristic = true;
-                } elseif ( class_exists( 'Classic_Editor' ) && method_exists( 'Classic_Editor', 'is_classic_editor_plugin_active_for_this_post_type' ) && Classic_Editor::is_classic_editor_plugin_active_for_this_post_type( $post_type ) ) {
+                } elseif (
+                    class_exists( 'Classic_Editor' )
+                    && method_exists( 'Classic_Editor', 'is_classic_editor_plugin_active_for_this_post_type' )
+                    && call_user_func( [ 'Classic_Editor', 'is_classic_editor_plugin_active_for_this_post_type' ], $post_type )
+                ) {
                     $is_classic_editor_html_heuristic = true;
                 }
 
                 if ( $is_classic_editor_html_heuristic ) {
-                    error_log( 'EUC Debug: Applying Classic Editor PHP hooks based on heuristic.' );
+                    if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+                        error_log( 'EUC Debug: Applying Classic Editor PHP hooks based on heuristic.' );
+                    }
                     add_action( 'add_meta_boxes', function() use ( $post_type, $elements_to_hide ) {
                         euc_remove_classic_meta_boxes( $post_type, $elements_to_hide );
                     }, 100 );

@@ -17,8 +17,10 @@ if ( ! defined( 'WPINC' ) ) {
  * @param array  $elements_to_hide An array of element IDs to hide.
  */
 function euc_remove_classic_meta_boxes( $post_type, $elements_to_hide ) {
-    error_log( 'EUC Debug: euc_remove_classic_meta_boxes called for post type: ' . $post_type );
-    error_log( 'EUC Debug: Elements to hide (meta boxes): ' . print_r( $elements_to_hide, true ) );
+    if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+        error_log( 'EUC Debug: euc_remove_classic_meta_boxes called for post type: ' . $post_type );
+        error_log( 'EUC Debug: Elements to hide (meta boxes): ' . print_r( $elements_to_hide, true ) );
+    }
     global $wp_meta_boxes;
     $all_elements = euc_get_configurable_ui_elements();
 
@@ -48,8 +50,10 @@ function euc_remove_classic_meta_boxes( $post_type, $elements_to_hide ) {
  * @param array $elements_to_hide An array of element IDs to hide.
  */
 function euc_hide_classic_elements_with_css( $elements_to_hide ) {
-    error_log( 'EUC Debug: euc_hide_classic_elements_with_css called.' );
-    error_log( 'EUC Debug: Elements to hide (CSS): ' . print_r( $elements_to_hide, true ) );
+    if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+        error_log( 'EUC Debug: euc_hide_classic_elements_with_css called.' );
+        error_log( 'EUC Debug: Elements to hide (CSS): ' . print_r( $elements_to_hide, true ) );
+    }
     $all_elements = euc_get_configurable_ui_elements();
     $css_selectors = [];
 
@@ -78,8 +82,10 @@ function euc_hide_classic_elements_with_css( $elements_to_hide ) {
  * @param string $custom_css The custom CSS rules.
  */
 function euc_apply_classic_custom_css( $custom_css ) {
-    error_log( 'EUC Debug: euc_apply_classic_custom_css called.' );
-    error_log( 'EUC Debug: Custom CSS: ' . $custom_css );
+    if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+        error_log( 'EUC Debug: euc_apply_classic_custom_css called.' );
+        error_log( 'EUC Debug: Custom CSS: ' . $custom_css );
+    }
     if ( ! empty( $custom_css ) ) {
         $selectors = array_map( 'trim', explode( "\n", $custom_css ) );
         $selectors = array_filter( $selectors ); // Remove empty lines.
